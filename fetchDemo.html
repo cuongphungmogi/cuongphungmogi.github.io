@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fetch Demo</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <script>
+        (function () {
+            fetch('https://jsonplaceholder.typicode.com/todos/1')
+                .then(response => {
+                    alert('status: ' + response.status);
+                    alert('statusText: ' + response.statusText);
+                    alert('type: ' + response.type);
+                    alert('url: ' + response.url);
+                    return response.json()
+                })
+                .then(json => alert(json))
+        }())
+    </script>
+</head>
+
+<body>
+    <h1>FetchDemo</h1>
+    <pre>
+            fetch('https://jsonplaceholder.typicode.com/todos/1')
+                .then(response => {
+                    alert('status: ' + response.status);
+                    alert('statusText: ' + response.statusText);
+                    alert('type: ' + response.type);
+                    alert('url: ' + response.url);
+                    return response.json()
+                })
+                .then(json => alert(json))
+    </pre>
+</body>
+
+</html>
