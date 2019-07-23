@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html amp lang="en">
 
@@ -6,8 +5,11 @@
     <meta charset="utf-8">
     <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
     <title>Hello, AMPs</title>
-    <link rel="canonical" href="https://cuongphungmogi.github.io/">
+    <link rel="canonical" href="/">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <script type="application/ld+json">
       {
@@ -87,11 +89,81 @@
             }
         </style>
     </noscript>
+    <style amp-custom>
+        #myList {
+            width: 100%;
+        }
+
+        .list-item {
+            padding: 7px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .list-item:not(:last-child) {
+            /* border-bottom: 1px solid #ddd; */
+        }
+        .hide {
+            display:none;
+        }
+        .show {
+            visibility: visible;
+        }
+        .active {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Welcome to the mobile web..</h1>
-    <amp-img src="../assets/welcome.jpg" alt="Welcome" height="200" width="400"></amp-img>
+    <amp-state id="abc">
+        <script type="application/json">
+            {
+                "loaded": false 
+            }
+        </script>
+    </amp-state>
+    <amp-state id="filter">
+        <script type="application/json">
+          {
+              "city": { "i": 0, "n": "Toan Quoc", "p": 0, "u": "" },
+              "district":{}
+          }
+        </script>
+    </amp-state>
+    <amp-state id="cities" src="../static/city.json"></amp-state>
+<p [text]="showDistrict">0</p>
+    <button 
+        on="tap:AMP.setState({ location: [{i: filter.city.i, n: (filter.city.i > 0)?'Tất cả':'Toàn quốc', p:filter.city.p, u: filter.city.u }].concat(cities['c'+ filter.city.i ].c), showDistrict: (filter.city.i > 0) })"
+        [text]="filter.city.n + ' - ' + filter.city.i"
+    >
+            Click me
+    </button>
+    <button 
+        on="tap:AMP.setState({ location: [{i: 0, n: 'Toàn quốc', p:0, u:''}].concat(cities['c0'].c), showDistrict: false, filter: {district : {}} })"
+        class="hide"
+        [class]="showDistrict?'':'hide'"
+    >Back
+    </button>
+    <!-- <button on="tap:AMP.pushState({location: cities['c30'].c})" [text]="filter.city.n">TP.HCM</button> -->
+    <amp-list layout="responsive" height="100%" [src]="location" id="myList" binding="refresh" reset-on-refresh="always">
+        <template type="amp-mustache">
+            <div [class]="showDistrict?'list-item':'hide'"  on="tap:AMP.setState({ filter: { district: { i: {{i}}, n: '{{n}}' , p: {{p}} , u: '{{u}}' } } }) ">
+                <!-- <span [class]="({{i}} === (filter.district.i || -1))?'active':''">{{n}}</span> -->
+                <span [class]="">{{n}}</span>
+            </div>
+            <div [class]="showDistrict?'hide':'list-item'"  on="tap:AMP.setState({ 
+                filter: { city: {i: {{i}}, n: '{{n}}' , p: {{p}} , u: '{{u}}' },district:{}},
+                location: ({{i}} > 0) ? [{i: {{i}}, n: 'Tất cả',p: {{p}} , u: '{{u}}' }].concat(cities['c'+ {{i}}].c): location,
+                showDistrict: ({{i}} > 0)
+            })">
+        <span [class]="({{i}} == filter.city.i)?'active':''">{{n}}</span>
+        </div>
+        </template>
+    </amp-list>
+
 </body>
 
 </html>
+<!-- on="tap:AMP.setState({ location: cities['c30'].c, filter: {city: { n : 'abc'}} })"  -->
+
+<!-- AMP.setState({ location: [{i: 30, n: 'Tất cả'}].concat(cities['c30'].c) }) -->
