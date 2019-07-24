@@ -8,6 +8,7 @@
     <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
     <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
     <title>Hello, AMPs</title>
     <link rel="canonical" href="/">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -90,26 +91,53 @@
         </style>
     </noscript>
     <style amp-custom>
+        body {
+            font-family: helvetica neue, Helvetica, Arial, sans-serif;
+        }
+
         #myList {
             width: 100%;
+
         }
 
         .list-item {
-            padding: 7px;
-            border-bottom: 1px solid #ddd;
+            padding: 0 15px;
+            line-height: 50px;
+            font-size: 15px;
+            border-bottom: 1px solid #dfdfe1;
+            background: #fff;
+            color: #222;
+
         }
 
+        /* 
         .list-item:not(:last-child) {
-            /* border-bottom: 1px solid #ddd; */
-        }
+            border-bottom: 1px solid #ddd;
+        } */
+
         .hide {
-            display:none;
+            display: none;
         }
+
         .show {
             visibility: visible;
         }
+
         .active {
-            color: red;
+            color: #00737c;
+        }
+
+        .lightbox {
+            background: rgba(0, 0, 0, 0.8);
+            background: #fff;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+
+        }
+
+        .lightbox h1 {
+            color: white;
         }
     </style>
 </head>
@@ -125,45 +153,43 @@
     <amp-state id="filter">
         <script type="application/json">
           {
-              "city": { "i": 0, "n": "Toan Quoc", "p": 0, "u": "" },
-              "district":{}
+              "city": { "i": 0, "n": "Toàn quốc", "p": 0, "u": "" },
+              "district": null
           }
         </script>
     </amp-state>
     <amp-state id="cities" src="../static/city.json"></amp-state>
-<p [text]="showDistrict">0</p>
-    <button 
-        on="tap:AMP.setState({ location: [{i: filter.city.i, n: (filter.city.i > 0)?'Tất cả':'Toàn quốc', p:filter.city.p, u: filter.city.u }].concat(cities['c'+ filter.city.i ].c), showDistrict: (filter.city.i > 0) })"
-        [text]="filter.city.n + ' - ' + filter.city.i"
-    >
-            Click me
-    </button>
-    <button 
-        on="tap:AMP.setState({ location: [{i: 0, n: 'Toàn quốc', p:0, u:''}].concat(cities['c0'].c), showDistrict: false, filter: {district : {}} })"
-        class="hide"
-        [class]="showDistrict?'':'hide'"
-    >Back
-    </button>
-    <!-- <button on="tap:AMP.pushState({location: cities['c30'].c})" [text]="filter.city.n">TP.HCM</button> -->
-    <amp-list layout="responsive" height="100%" [src]="location" id="myList" binding="refresh" reset-on-refresh="always">
-        <template type="amp-mustache">
-            <div [class]="showDistrict?'list-item':'hide'"  on="tap:AMP.setState({ filter: { district: { i: {{i}}, n: '{{n}}' , p: {{p}} , u: '{{u}}' } } }) ">
-                <!-- <span [class]="({{i}} === (filter.district.i || -1))?'active':''">{{n}}</span> -->
-                <span [class]="">{{n}}</span>
-            </div>
-            <div [class]="showDistrict?'hide':'list-item'"  on="tap:AMP.setState({ 
-                filter: { city: {i: {{i}}, n: '{{n}}' , p: {{p}} , u: '{{u}}' },district:{}},
-                location: ({{i}} > 0) ? [{i: {{i}}, n: 'Tất cả',p: {{p}} , u: '{{u}}' }].concat(cities['c'+ {{i}}].c): location,
-                showDistrict: ({{i}} > 0)
-            })">
-        <span [class]="({{i}} == filter.city.i)?'active':''">{{n}}</span>
-        </div>
-        </template>
-    </amp-list>
+    <button on="tap:AMP.setState({ 
+            location: [{i: filter.city.i, n: (filter.city.i > 0)?'Tất cả':'Toàn quốc', p:filter.city.p, u: filter.city.u }].concat(cities['c'+ filter.city.i ].c),
+             showDistrict: (filter.city.i > 0), showPopUp: true }),quote-lb"
+        [text]="(filter.district.n || '').concat(' ',filter.city.n)">Toàn quốc
 
+    </button>
+    <amp-lightbox id="quote-lb" layout="nodisplay" class="myClass" scrollable [open]="showPopUp">
+        <div class="lightbox">
+            <a href="javascript:void(0)"
+                on="tap:AMP.setState({ location: [{i: 0, n: 'Toàn quốc', p:0, u:''}].concat(cities['c0'].c), showDistrict: false, filter: {district : null} })"
+                class="hide" [class]="showDistrict?'':'hide'">
+                < Back </a> <amp-list layout="responsive" [src]="location" id="myList" binding="refresh"
+                    reset-on-refresh="always">
+                    <template type="amp-mustache">
+                        <div [class]="showDistrict?'list-item':'hide'"
+                            on="tap:AMP.setState({ filter: { district: ({{i}} == filter.city.i)?null:{ i: {{i}}, n: '{{n}}' , p: {{p}} , u: '{{u}}' } } }),quote-lb.close ">
+                            <span [class]="">{{n}}</span>
+                        </div>
+                        <div [class]="showDistrict?'hide':'list-item'" on="tap:AMP.setState({ 
+                filter: { city: {i: {{i}}, n: '{{n}}' , p: {{p}} , u: '{{u}}' },district:null},
+                location: ({{i}} > 0) ? [{i: {{i}}, n: 'Tất cả',p: {{p}} , u: '{{u}}' }].concat(cities['c'+ {{i}}].c): location,
+                showDistrict: ({{i}} > 0),
+                showPopUp: ({{i}} > 0) ? true : false
+            })">
+                            <span [class]="({{i}} == filter.city.i)?'active':''">{{n}}</span>
+                        </div>
+
+                    </template>
+                    </amp-list>
+        </div>
+    </amp-lightbox>
 </body>
 
 </html>
-<!-- on="tap:AMP.setState({ location: cities['c30'].c, filter: {city: { n : 'abc'}} })"  -->
-
-<!-- AMP.setState({ location: [{i: 30, n: 'Tất cả'}].concat(cities['c30'].c) }) -->
