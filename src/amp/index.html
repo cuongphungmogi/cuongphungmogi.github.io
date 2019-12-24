@@ -159,13 +159,15 @@
         </script>
     </amp-state>
     <amp-state id="cities" src="../static/city.json"></amp-state>
+    <!-- <p [text]="filter.city.i"></p>
+    <p [text]="filter.district.i"></p> -->
     <button on="tap:AMP.setState({ 
             location: [{i: filter.city.i, n: (filter.city.i > 0)?'Tất cả':'Toàn quốc', p:filter.city.p, u: filter.city.u }].concat(cities['c'+ filter.city.i ].c),
              showDistrict: (filter.city.i > 0), showPopUp: true }),quote-lb"
         [text]="(filter.district.n || '').concat(' ',filter.city.n)">Toàn quốc
 
     </button>
-    <amp-lightbox id="quote-lb" layout="nodisplay" class="myClass" scrollable [open]="showPopUp">
+    <amp-lightbox id="quote-lb" layout="nodisplay" class="myClass" scrollable [open]="showPopUp" binding="refresh">
         <div class="lightbox">
             <a href="javascript:void(0)"
                 on="tap:AMP.setState({ location: [{i: 0, n: 'Toàn quốc', p:0, u:''}].concat(cities['c0'].c), showDistrict: false, filter: {district : null} })"

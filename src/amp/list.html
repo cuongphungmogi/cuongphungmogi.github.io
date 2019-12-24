@@ -1,0 +1,370 @@
+<!doctype html>
+<html amp lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <link rel="canonical" href="/article.html">
+    <link rel="shortcut icon" href="amp_favicon.png">
+
+    <title>News Article</title>
+
+    <style amp-boilerplate>
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both
+        }
+
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+    </style><noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none
+            }
+        </style>
+    </noscript>
+    <style amp-custom>
+        body {
+            width: auto;
+            margin: 0;
+            padding: 0;
+            font-family: helvetica neue, Helvetica, Arial, sans-serif;
+            padding-top: 50px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .clearfix::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+
+        a,
+        a:visited,
+        a:hover {
+            color: #222;
+            text-decoration: none;
+        }
+
+        #property-list div[role="list"] {
+            margin-left: 10px;
+        }
+
+        #property-list div[role="listitem"] {
+            padding-left: 0;
+            padding-right: 5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-top: 1px solid #dfdfe1;
+            position: relative;
+        }
+
+        div[role="listitem"]::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+
+        .item-media {
+            width: 120px;
+            float: left;
+        }
+
+        .price {
+            font-size: 14px;
+            line-height: 30px;
+            width: 120px;
+            color: #009177;
+            background-color: #f1f4f6;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .item-info {
+            width: calc(100% - 120px);
+            float: left;
+            padding-left: 5px;
+            padding-right: 10px;
+        }
+
+        .item-info>h2 {
+            margin: 0;
+            font-size: 14px;
+            line-height: 20px;
+            min-height: 20px;
+            max-height: 40px;
+            font-weight: normal;
+            overflow: hidden;
+        }
+
+        .item-info>h2 a {
+            color: #222;
+        }
+
+        .item-info .prop-addr {
+            font-size: 12px;
+            line-height: 14px;
+            height: 14px;
+            margin-top: 6px;
+            color: #5a646e;
+            overflow: hidden;
+        }
+
+        .prop-attr {
+            margin: 10px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .prop-attr>li {
+            display: inline-block;
+            font-size: 14px;
+            margin-right: 10px;
+            color: #262637;
+        }
+
+        .prop-attr>li svg {
+            width: 20px;
+            display: inline-block;
+            vertical-align: bottom;
+            color: #5a646e;
+
+        }
+
+        .prop-extra {
+            position: absolute;
+            width: calc(100% - 130px);
+            bottom: 10px;
+            right: 10px;
+            padding-left: 5px;
+            padding-right: 10px;
+        }
+
+        .prop-created {
+            line-height: 26px;
+            float: left;
+            color: #5a646e;
+            font-size: 12px;
+        }
+
+        .favorite {
+            border: 1px solid #dfdfe1;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            float: right;
+        }
+
+        .favorite svg {
+            width: 16px;
+            display: inline-block;
+            color: #eb3264;
+            margin: 4px;
+        }
+
+        .prop-mobile {
+            border: 1px solid #dfdfe1;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            float: right;
+            margin-right: 15px;
+        }
+
+        .prop-mobile svg {
+            width: 16px;
+            display: inline-block;
+            color: #009177;
+            margin: 4px;
+        }
+
+        .up-item {
+            display: block;
+            position: absolute;
+            right: 13px;
+            top: 0;
+            height: 22px;
+            padding: 0;
+            -webkit-transform: rotate(0deg) skew(0deg);
+            transform: rotate(0deg) skew(0deg);
+            border-left: 7px solid #ffc000;
+            border-right: 7px solid #ffc000;
+            border-bottom: 5px solid #0000;
+            z-index: 1;
+        }
+
+        .up-item svg {
+            position: absolute;
+            right: -5px;
+            top: 5px;
+            color: #fff;
+            width: 10px;
+            z-index: 2;
+        }
+    </style>
+
+    <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+
+</head>
+
+<body>
+    <amp-state id="pagedata">
+        <script type="application/json">
+                    {
+                        "pid": 0 
+                    }
+                </script>
+    </amp-state>
+    <form method="post" action-xhr="//dev-web.mogi.vn:8780/api/common/favorite-add" target="_top" id="frm_Favorite">
+        <input type="hidden" [value]="205" name="propertyId" />
+    </form>
+    <div id="1" class="favorite" on="tap:frm_Favorite.submit">xxxx
+        <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="heart" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+            class="svg-inline--fa fa-heart fa-w-16">
+            <path fill="currentColor"
+                d="M462.3 62.7c-54.5-46.4-136-38.7-186.6 13.5L256 96.6l-19.7-20.3C195.5 34.1 113.2 8.7 49.7 62.7c-62.8 53.6-66.1 149.8-9.9 207.8l193.5 199.8c6.2 6.4 14.4 9.7 22.6 9.7 8.2 0 16.4-3.2 22.6-9.7L472 270.5c56.4-58 53.1-154.2-9.7-207.8zm-13.1 185.6L256.4 448.1 62.8 248.3c-38.4-39.6-46.4-115.1 7.7-161.2 54.8-46.8 119.2-12.9 142.8 11.5l42.7 44.1 42.7-44.1c23.2-24 88.2-58 142.8-11.5 54 46 46.1 121.5 7.7 161.2z"
+                class=""></path>
+        </svg>
+    </div>
+    <br/>
+    <amp-list width="auto" height="600" layout="flex-item" src="../static/properties.json" id="property-list">
+        <template type="amp-mustache">
+            <div class="item-media">
+                <amp-img class="cover" alt="{{title}}" src="{{cover}}" width="auto" height="90" layout="fixed-height">
+                </amp-img>
+                <div class="price">{{price}}</div>
+            </div>
+            <div class="item-info">
+                <h2 class="title">
+                    <a class="link-overlay" href="{{url}}">{{title}}</a>
+                </h2>
+                <div class="prop-addr">{{address}}</div>
+                <ul class="prop-attr">
+                    <li class="land">
+                        <!-- Generated by IcoMoon.io -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 32 32">
+                            <path fill="currentColor"
+                                d="M12.73 11.666c-0.518 0-0.939 0.42-0.939 0.939v14.083c0 0.518 0.42 0.939 0.939 0.939h14.083c0.518 0 0.939-0.42 0.939-0.939v-14.083c0-0.518-0.42-0.939-0.939-0.939h-14.083zM6.158 11.666h0.939c0.519 0 0.939-0.42 0.939-0.939s-0.42-0.939-0.939-0.939h-3.755c-0.518 0-0.939 0.42-0.939 0.939s0.42 0.939 0.939 0.939h0.939v15.96h-0.939c-0.518 0-0.939 0.42-0.939 0.939s0.42 0.939 0.939 0.939h3.755c0.518 0 0.939-0.42 0.939-0.939s-0.42-0.939-0.939-0.939h-0.939v-15.96zM11.791 4.155v-0.939c0-0.518-0.42-0.939-0.939-0.939s-0.939 0.42-0.939 0.939v3.755c0 0.518 0.42 0.939 0.939 0.939s0.939-0.42 0.939-0.939v-0.939h15.96v0.939c0 0.518 0.42 0.939 0.939 0.939s0.939-0.42 0.939-0.939v-3.755c0-0.518-0.42-0.939-0.939-0.939s-0.939 0.42-0.939 0.939v0.939h-15.96zM12.73 9.788h14.083c1.556 0 2.817 1.261 2.817 2.817v14.083c0 1.556-1.261 2.817-2.817 2.817h-14.083c-1.556 0-2.817-1.261-2.817-2.817v-14.083c0-1.556 1.261-2.817 2.817-2.817z">
+                            </path>
+                        </svg>
+
+                        {{area}} m<sup>2</sup></li>
+                    <li class="bed">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="bed" role="img"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
+                            class="svg-inline--fa fa-bed fa-w-20">
+                            <path fill="currentColor"
+                                d="M144 320c44.11 0 80-35.89 80-80s-35.89-80-80-80-80 35.89-80 80 35.89 80 80 80zm0-128c26.47 0 48 21.53 48 48s-21.53 48-48 48-48-21.53-48-48 21.53-48 48-48zm384-32H272c-8.84 0-16 7.16-16 16v176H32V72c0-4.42-3.58-8-8-8H8c-4.42 0-8 3.58-8 8v368c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-56h576v56c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8V272c0-61.86-50.14-112-112-112zm80 192H288V192h240c44.11 0 80 35.89 80 80v80z"
+                                class=""></path>
+                        </svg>
+                        {{bed}}</li>
+                    <li class="bath">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="bath" role="img"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                            class="svg-inline--fa fa-bath fa-w-16">
+                            <path fill="currentColor"
+                                d="M500 256H64V104c0-22.056 17.944-40 40-40 16.819 0 31.237 10.44 37.14 25.175-18.241 23.852-17.441 57.684 2.42 80.645-3.794 3.794-3.794 9.946 0 13.74l8.88 8.88c3.794 3.794 9.946 3.794 13.74 0l90.26-90.26c3.794-3.794 3.794-9.946 0-13.74l-8.88-8.88c-3.794-3.794-9.946-3.794-13.74 0-18.818-16.277-44.942-19.76-66.887-10.445C154.635 47.003 131.047 32 104 32c-39.701 0-72 32.299-72 72v152H12c-6.627 0-12 5.373-12 12v8c0 6.627 5.373 12 12 12h20v64c0 28.43 12.362 53.969 32 71.547V468c0 6.627 5.373 12 12 12h8c6.627 0 12-5.373 12-12v-25.47a95.842 95.842 0 0 0 32 5.47h256a95.842 95.842 0 0 0 32-5.47V468c0 6.627 5.373 12 12 12h8c6.627 0 12-5.373 12-12v-44.453c19.638-17.578 32-43.117 32-71.547v-64h20c6.627 0 12-5.373 12-12v-8c0-6.627-5.373-12-12-12zM169.37 105.37c11.36-11.35 29.19-12.37 41.71-3.07l-44.78 44.78c-9.3-12.52-8.28-30.35 3.07-41.71zM448 352c0 35.29-28.71 64-64 64H128c-35.29 0-64-28.71-64-64v-64h384v64z"
+                                class=""></path>
+                        </svg>
+                        {{bath}}</li>
+                </ul>
+            </div>
+            <div class="prop-extra clearfix">
+                <div class="prop-created">{{date}}</div>
+                <div id="{{id}}" class="favorite"
+                    on="tap:AMP.setState({pagedata : { pid: {{id}} }}),frm_Favorite.submit">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="heart" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        class="svg-inline--fa fa-heart fa-w-16">
+                        <path fill="currentColor"
+                            d="M462.3 62.7c-54.5-46.4-136-38.7-186.6 13.5L256 96.6l-19.7-20.3C195.5 34.1 113.2 8.7 49.7 62.7c-62.8 53.6-66.1 149.8-9.9 207.8l193.5 199.8c6.2 6.4 14.4 9.7 22.6 9.7 8.2 0 16.4-3.2 22.6-9.7L472 270.5c56.4-58 53.1-154.2-9.7-207.8zm-13.1 185.6L256.4 448.1 62.8 248.3c-38.4-39.6-46.4-115.1 7.7-161.2 54.8-46.8 119.2-12.9 142.8 11.5l42.7 44.1 42.7-44.1c23.2-24 88.2-58 142.8-11.5 54 46 46.1 121.5 7.7 161.2z"
+                            class=""></path>
+                    </svg>
+                </div>
+                <div class="prop-mobile">
+                    <a gtm-event="link" href="tel:{{mobile}}">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone-alt" role="img"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                            class="svg-inline--fa fa-phone-alt fa-w-16">
+                            <path fill="currentColor"
+                                d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"
+                                class=""></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="up-item"> <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star"
+                    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                    class="svg-inline--fa fa-star fa-w-18">
+                    <path fill="currentColor"
+                        d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
+                        class=""></path>
+                </svg></div>
+        </template>
+    </amp-list>
+</body>
+
+</html>
