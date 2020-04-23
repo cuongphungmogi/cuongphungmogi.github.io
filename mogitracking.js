@@ -18,6 +18,24 @@ OneSignal.isPushNotificationsEnabled(function (isEnabled) {
     });
   }
 });
+
+OneSignal.push(["addListenerForNotificationOpened", function(payload) {
+  let topic = payload.data.topic; // set topic in notification
+  if (topic) {
+    OneSignal.getTags().then(function(tags) {
+      var topicCount = parseInt(tags[topic], 10);
+      console.log("topicCount: ", topicCount);
+      if (!isNaN(topicCount)) {
+        topicCount += 1;
+      } else {
+        topicCount = 1;
+      }
+      OneSignal.sendTag(topic, topicCount).then(function(tagsSent) {
+        console.log("tagsSent: ", JSON.stringify(tagsSent));
+      });
+    });
+  }
+}]);
 // tracking
 var MogiTracking = window.MogiTracking || {};
 
