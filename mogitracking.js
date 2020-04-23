@@ -1,7 +1,15 @@
-OneSignal.push(["getNotificationPermission", function(permission) {
-  console.log("Site Notification Permission:", permission);
-  // (Output) Site Notification Permission: default
-}]);
+OneSignal.push(function () {
+  /* These examples are all valid */
+  OneSignal.isPushNotificationsEnabled(function (isEnabled) {
+    if (isEnabled)
+    {
+      const ext_id = MOGI.ProfileId;
+      OneSignal.setExternalUserId(ext_id);
+    };
+  });
+
+});
+
 
 var MogiTracking = window.MogiTracking || {};
 
