@@ -46,10 +46,10 @@ var MogiTracking = (function () {
       id: player_id
     };
 
-    fetch('http://localhost:8088/Tracking/Addtracking', {
-      method: 'POST',
-      body: JSON.stringify(payload)
-    });
+    // fetch('http://localhost:8088/Tracking/Addtracking', {
+    //   method: 'POST',
+    //   body: JSON.stringify(payload)
+    // });
 
   };
 
