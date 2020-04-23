@@ -32,10 +32,10 @@
 
       OneSignal.on('subscriptionChange', function (isSubscribed) {
         if (isSubscribed) {
-          const ext_id = MOGI.ProfileId;
-          OneSignal.setExternalUserId(ext_id);
           OneSignal.getUserId(function (userId) {
+            // must check if not tracking...
             MogiTracking.AddTracking(userId);
+            OneSignal.setExternalUserId(MOGI.ProfileId);
           });
 
         }
@@ -52,14 +52,16 @@
     }
     window.OneSignal.isPushNotificationsEnabled(function (isEnabled) {
       if (isEnabled) {
-        OneSignal.setExternalUserId(MOGI.ProfileId);
+
         OneSignal.getUserId(function (userId) {
+          // must check if not tracking...
           MogiTracking.AddTracking(userId);
+          OneSignal.setExternalUserId(MOGI.ProfileId);
         });
       }
     });
   </script>
-  
+
   <script>
     var MOGI = {
       ClientId: "7b874735-7d6e-4eaf-bea7-6e3e510eddf4",
