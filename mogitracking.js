@@ -1,10 +1,10 @@
-
+// onesignal configs
 OneSignal.on('subscriptionChange', function (isSubscribed) {
   if (isSubscribed) {
     OneSignal.getUserId(function (userId) {
-      // must check if not tracking...
       MogiTracking.AddTracking(userId);
-      OneSignal.setExternalUserId(MOGI.ProfileId);
+      MogiTracking.UpdateOneSignal();
+
     });
 
   }
@@ -13,12 +13,12 @@ OneSignal.isPushNotificationsEnabled(function (isEnabled) {
   if (isEnabled) {
 
     OneSignal.getUserId(function (userId) {
-      // must check if not tracking...
       MogiTracking.AddTracking(userId);
-      OneSignal.setExternalUserId(MOGI.ProfileId);
+      MogiTracking.UpdateOneSignal();
     });
   }
 });
+// tracking
 var MogiTracking = window.MogiTracking || {};
 
 var MogiTracking = (function () {
@@ -34,8 +34,18 @@ var MogiTracking = (function () {
     });
 
   };
+
+  const UpdateOneSignal = function () {
+    // set user
+    OneSignal.setExternalUserId(MOGI.ProfileId);
+    // add tracking tag
+
+    // add user info
+
+  }
   return {
-    AddTracking: AddTracking
+    AddTracking: AddTracking,
+    UpdateOneSignal: UpdateOneSignal
   };
 
 
