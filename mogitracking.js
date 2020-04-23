@@ -4,7 +4,7 @@ OneSignal.push(function () {
     if (isEnabled)
     {
       const ext_id = MOGI.ProfileId;
-      OneSignal.setExternalUserId(ext_id);
+      // OneSignal.setExternalUserId(ext_id);
     };
   });
 
