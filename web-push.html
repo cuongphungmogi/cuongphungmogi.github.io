@@ -18,7 +18,37 @@
 
   </script>
   <script src="./mogitracking.js" async=""></script>
+  <script data-cfasync="false">
+    window.OneSignal = window.OneSignal || [];
+    var numVisitsTrigger = 3; /* Number of page visits before prompting user */
 
+    window.OneSignal.push(function () {
+      var numVisits = new Number(localStorage['numVisitsTrigger'] || 0);
+      numVisits += 1;
+      localStorage['numVisitsTrigger'] = numVisits;
+      if (numVisits >= numVisitsTrigger) {
+        promptAndSubscribeUser();
+      }
+
+      OneSignal.on('subscriptionChange', function (isSubscribed) {
+        if (isSubscribed) {
+          const ext_id = MOGI.ProfileId;
+          OneSignal.setExternalUserId(ext_id);
+        }
+      });
+    });
+
+    function promptAndSubscribeUser() {
+      /* Want to trigger different permission messages? See: https://documentation.onesignal.com/docs/permission-requests#section-onesignal-permission-messages */
+      window.OneSignal.isPushNotificationsEnabled(function (isEnabled) {
+        if (!isEnabled) {
+          window.OneSignal.showNativePrompt();
+        } else {
+          OneSignal.setExternalUserId(MOGI.ProfileId);
+        }
+      });
+    }
+  </script>
   <script>
     var MOGI = {
       ClientId: "7b874735-7d6e-4eaf-bea7-6e3e510eddf4",
