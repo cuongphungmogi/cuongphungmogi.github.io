@@ -55,11 +55,21 @@ var MogiTracking = (function () {
 
   const UpdateOneSignal = function () {
     // set user
-    OneSignal.setExternalUserId(MOGI.ProfileId);
+    // OneSignal.setExternalUserId(MOGI.ProfileId);
     // add tracking tag
 
     // add user info
+    userTags();
 
+  }
+  const userTags = function() {
+    OneSignal.sendTags({
+      user_id : MOGI.ProfileId,
+      real_name: MOGI.LastName + ' ' + MOGI.FirstName,
+      user_name: 'user_name',
+      user_type: 'user_type',
+      user_client_id: MOGI.ClientId,
+    }, function(tagsSent) {console.log('userTags sent' + tagsSent);});
   }
   return {
     AddTracking: AddTracking,
